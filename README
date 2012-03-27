@@ -1,0 +1,24 @@
+BUILDING FROM GIT
+=================
+
+    autoreconf --install
+    ./configure
+    make
+
+BUILDING FROM SOURCES
+=====================
+
+    ./configure
+    make
+
+RUNNING TESTS
+=============
+
+Note: Check (check.sourceforge.net) is required
+
+    make check
+
+INSTALLING
+==========
+
+    make install
