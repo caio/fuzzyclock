@@ -32,6 +32,10 @@ char* FUZZY_MSG[] = {
     "five to %s\n",
 };
 
+char* const get_hour_string(int hour) {
+    return HOUR_NAMES[(hour - 1) % 12];
+}
+
 void get_fuzzy_time(struct tm* clock, char* buffer) {
     int index = 0;
     int hour = clock->tm_hour;
@@ -44,7 +48,7 @@ void get_fuzzy_time(struct tm* clock, char* buffer) {
     if (index > 6) { hour++; }
 
     char* timestr = FUZZY_MSG[index];
-    char* hourname = HOUR_NAMES[(hour - 1) % 12];
+    char* hourname = get_hour_string(hour);
 
     snprintf(buffer, MAX_MSG_SIZE, timestr, hourname);
 }

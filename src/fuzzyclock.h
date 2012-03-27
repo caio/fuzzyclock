@@ -8,4 +8,6 @@
 
 void get_fuzzy_time(struct tm*, char*);
 
+char* const get_hour_string(int hour);
+
 #endif
