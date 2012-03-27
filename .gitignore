@@ -18,3 +18,4 @@ config.status
 stamp-h1
 src/fuzzyclock
 src/libfuzzyclock.a
+tests/check_fuzzyclock
