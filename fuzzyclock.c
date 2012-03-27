@@ -1,8 +1,6 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
-
-#define BUFSIZE 30
+#include "fuzzyclock.h"
 
 char* HOUR_NAMES[] = {
     "one",
@@ -50,14 +48,5 @@ void get_fuzzy_time(time_t timer, char* buffer) {
     char* timestr = FUZZY_MSG[index];
     char* hourname = HOUR_NAMES[(hour - 1) % 12];
 
-    snprintf(buffer, BUFSIZE, timestr, hourname);
-}
-
-
-int main(int argc, char const* argv[])
-{
-    char msg[BUFSIZE];
-    get_fuzzy_time(time(NULL), msg);
-    printf(msg);
-    return 0;
+    snprintf(buffer, MAX_MSG_SIZE, timestr, hourname);
 }
