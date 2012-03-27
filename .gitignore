@@ -16,3 +16,5 @@ config.log
 config.status
 .deps/
 stamp-h1
+src/fuzzyclock
+src/libfuzzyclock.a
