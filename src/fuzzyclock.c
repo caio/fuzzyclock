@@ -18,18 +18,18 @@ char* HOUR_NAMES[] = {
 };
 
 char* FUZZY_MSG[] = {
-    "%s o' clock\n",
-    "five past %s\n",
-    "ten past %s\n",
-    "quarter past %s\n",
-    "twenty past %s\n",
-    "twenty five past %s\n",
-    "half past %s\n",
-    "twenty five to %s\n",
-    "twenty to %s\n",
-    "quarter to %s\n",
-    "ten to %s\n",
-    "five to %s\n",
+    "%s o' clock",
+    "five past %s",
+    "ten past %s",
+    "quarter past %s",
+    "twenty past %s",
+    "twenty five past %s",
+    "half past %s",
+    "twenty five to %s",
+    "twenty to %s",
+    "quarter to %s",
+    "ten to %s",
+    "five to %s",
 };
 
 char* const get_hour_string(int hour) {
