@@ -32,9 +32,7 @@ char* FUZZY_MSG[] = {
     "five to %s\n",
 };
 
-void get_fuzzy_time(time_t timer, char* buffer) {
-    struct tm* clock = localtime(&timer);
-
+void get_fuzzy_time(struct tm* clock, char* buffer) {
     int index = 0;
     int hour = clock->tm_hour;
     int min = clock->tm_min;

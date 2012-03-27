@@ -6,6 +6,6 @@
 
 #define MAX_MSG_SIZE 30
 
-void get_fuzzy_time(time_t, char*);
+void get_fuzzy_time(struct tm*, char*);
 
 #endif

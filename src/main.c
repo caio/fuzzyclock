@@ -5,7 +5,8 @@
 int main(int argc, char const* argv[])
 {
     char msg[MAX_MSG_SIZE];
-    get_fuzzy_time(time(NULL), msg);
+    time_t now = time(NULL);
+    get_fuzzy_time(localtime(&now), msg);
     printf(msg);
     return 0;
 }
