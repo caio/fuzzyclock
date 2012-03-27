@@ -20,11 +20,34 @@ START_TEST(test_get_hour_string) {
 }
 END_TEST
 
+START_TEST(test_get_fuzzy_time) {
+    char buff[MAX_MSG_SIZE];
+    char test[MAX_MSG_SIZE];
+    time_t now = time(NULL);
+    struct tm* clock = localtime(&now);
+    int i = 0;
+
+    // Verifying o' clock
+    clock->tm_min = 0;
+
+    for (i = 1; i < 12; i++) {
+        clock->tm_hour = i;
+        snprintf(test, MAX_MSG_SIZE, "%s o' clock", get_hour_string(i));
+
+        get_fuzzy_time(clock, buff);
+
+        fail_if(strcmp(test, buff) != 0, "WANTED \"%s\", GOT \"%s\"", test, buff);
+    }
+
+}
+END_TEST
+
 Suite* fuzzy_suite(void) {
     Suite* suite = suite_create("fuzzyclock");
 
     TCase* tc_core = tcase_create("Core");
     tcase_add_test(tc_core, test_get_hour_string);
+    tcase_add_test(tc_core, test_get_fuzzy_time);
     suite_add_tcase(suite, tc_core);
 
     return suite;
