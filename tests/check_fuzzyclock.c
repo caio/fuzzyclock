@@ -46,7 +46,10 @@ void fuzzy_time_test_gen(int hour, int min, int start, int end,
 }
 
 START_TEST(test_oclock) {
-    fuzzy_time_test_gen(1, 0, 1, 13, "%s o' clock", 1);
+    int i;
+    for (i = 0; i < 3; i++) {
+        fuzzy_time_test_gen(1, i, 1, 13, "%s o' clock", 1);
+    }
 }
 END_TEST
 
