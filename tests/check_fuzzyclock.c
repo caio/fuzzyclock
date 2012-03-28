@@ -38,7 +38,29 @@ START_TEST(test_oclock) {
 
         fail_if(strcmp(test, buff) != 0, "WANTED \"%s\", GOT \"%s\"", test, buff);
     }
+}
+END_TEST
 
+START_TEST(test_fivepast) {
+    char buff[MAX_MSG_SIZE];
+    char test[MAX_MSG_SIZE];
+    time_t now = time(NULL);
+    struct tm* clock = localtime(&now);
+    int i = 0;
+
+    // Verifying "five past"
+
+    clock->tm_hour = 1;
+
+    for (i = 3; i < 8; i++) {
+        clock->tm_min = i;
+
+        snprintf(test, MAX_MSG_SIZE, "five past one");
+
+        get_fuzzy_time(clock, buff);
+
+        fail_if(strcmp(test, buff) != 0, "WANTED \"%s\", GOT \"%s\"", test, buff);
+    }
 }
 END_TEST
 
@@ -46,8 +68,11 @@ Suite* fuzzy_suite(void) {
     Suite* suite = suite_create("fuzzyclock");
 
     TCase* tc_core = tcase_create("Core");
+
     tcase_add_test(tc_core, test_get_hour_string);
     tcase_add_test(tc_core, test_oclock);
+    /* tcase_add_test(tc_core, test_fivepast); */
+
     suite_add_tcase(suite, tc_core);
 
     return suite;
