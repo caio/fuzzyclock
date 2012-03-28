@@ -48,7 +48,7 @@ void get_fuzzy_time(struct tm* clock, char* buffer) {
 
     if (index > 6) { hour++; }
 
-    char* timestr = FUZZY_MSG[index];
+    char* timestr = FUZZY_MSG[index % 12];
     char* hourname = get_hour_string(hour);
 
     snprintf(buffer, MAX_MSG_SIZE, timestr, hourname);

@@ -119,6 +119,11 @@ START_TEST(test_fiveto) {
 }
 END_TEST
 
+START_TEST(test_58_59_should_be_oclock) {
+    fuzzy_time_test_gen(1, 58, 58, 60, "%s o' clock", 0);
+}
+END_TEST
+
 Suite* fuzzy_suite(void) {
     Suite* suite = suite_create("fuzzyclock");
 
@@ -142,6 +147,7 @@ Suite* fuzzy_suite(void) {
 
     // corner cases
     tcase_add_test(tc_core, test_zero_should_be_twelve);
+    tcase_add_test(tc_core, test_58_59_should_be_oclock);
 
     suite_add_tcase(suite, tc_core);
 
