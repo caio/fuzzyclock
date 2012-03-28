@@ -1,3 +1,25 @@
+INTRODUCTION
+============
+
+fuzzyclock is a simple program written in C to output the current time
+in a "fuzzy format", i.e.: instead of outputting 4:17, it will write
+out "fifteen past four".
+
+This program was written as an exercise for learning about the Check
+testing framework and refreshing my (rather basic) autotools knowledge.
+
+
+USAGE
+=====
+
+In the command line:
+
+    fuzzyclock
+
+You can also use the libfuzzyclock.a library in your software. Check
+src/fuzzyclock.h for the exported functions.
+
+
 BUILDING FROM GIT
 =================
 
@@ -5,11 +27,13 @@ BUILDING FROM GIT
     ./configure
     make
 
+
 BUILDING FROM SOURCES
 =====================
 
     ./configure
     make
+
 
 RUNNING TESTS
 =============
@@ -17,6 +41,7 @@ RUNNING TESTS
 Note: Check (check.sourceforge.net) is required
 
     make check
+
 
 INSTALLING
 ==========
