@@ -1,4 +1,4 @@
-AC_INIT([fuzzyclock], [0.1], [github@caioromao.com])
+AC_INIT([fuzzyclock], [1.0], [github@caioromao.com])
 
 AC_CONFIG_AUX_DIR([build-aux])
 
