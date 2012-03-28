@@ -36,7 +36,7 @@ START_TEST(test_oclock) {
 
         get_fuzzy_time(clock, buff);
 
-        fail_if(strcmp(test, buff) != 0, "WANTED \"%s\", GOT \"%s\"", test, buff);
+        fail_if(strcmp(test, buff) != 0, "T%0d:WANTED \"%s\", GOT \"%s\"", i, test, buff);
     }
 }
 END_TEST
@@ -59,7 +59,7 @@ START_TEST(test_fivepast) {
 
         get_fuzzy_time(clock, buff);
 
-        fail_if(strcmp(test, buff) != 0, "WANTED \"%s\", GOT \"%s\"", test, buff);
+        fail_if(strcmp(test, buff) != 0, "T%0d:WANTED \"%s\", GOT \"%s\"", i, test, buff);
     }
 }
 END_TEST
