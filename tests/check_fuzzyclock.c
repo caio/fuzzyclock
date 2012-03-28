@@ -55,6 +55,31 @@ START_TEST(test_fivepast) {
 }
 END_TEST
 
+START_TEST(test_tenpast) {
+    fuzzy_time_test_gen(1, 0, 8, 13, "ten past %s", 0);
+}
+END_TEST
+
+START_TEST(test_quarterpast) {
+    fuzzy_time_test_gen(1, 0, 13, 18, "quarter past %s", 0);
+}
+END_TEST
+
+START_TEST(test_twentypast) {
+    fuzzy_time_test_gen(1, 0, 18, 23, "twenty past %s", 0);
+}
+END_TEST
+
+START_TEST(test_twentyfivepast) {
+    fuzzy_time_test_gen(1, 0, 23, 28, "twenty five past %s", 0);
+}
+END_TEST
+
+START_TEST(test_haltpast) {
+    fuzzy_time_test_gen(1, 0, 28, 33, "half past %s", 0);
+}
+END_TEST
+
 Suite* fuzzy_suite(void) {
     Suite* suite = suite_create("fuzzyclock");
 
@@ -63,6 +88,11 @@ Suite* fuzzy_suite(void) {
     tcase_add_test(tc_core, test_get_hour_string);
     tcase_add_test(tc_core, test_oclock);
     /* tcase_add_test(tc_core, test_fivepast); */
+    /* tcase_add_test(tc_core, test_tenpast); */
+    /* tcase_add_test(tc_core, test_quarterpast); */
+    /* tcase_add_test(tc_core, test_twentypast); */
+    /* tcase_add_test(tc_core, test_twentyfivepast); */
+    /* tcase_add_test(tc_core, test_haltpast); */
 
     suite_add_tcase(suite, tc_core);
 
