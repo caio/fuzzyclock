@@ -20,7 +20,7 @@ START_TEST(test_get_hour_string) {
 }
 END_TEST
 
-START_TEST(test_get_fuzzy_time) {
+START_TEST(test_oclock) {
     char buff[MAX_MSG_SIZE];
     char test[MAX_MSG_SIZE];
     time_t now = time(NULL);
@@ -47,7 +47,7 @@ Suite* fuzzy_suite(void) {
 
     TCase* tc_core = tcase_create("Core");
     tcase_add_test(tc_core, test_get_hour_string);
-    tcase_add_test(tc_core, test_get_fuzzy_time);
+    tcase_add_test(tc_core, test_oclock);
     suite_add_tcase(suite, tc_core);
 
     return suite;
