@@ -20,6 +20,11 @@ START_TEST(test_get_hour_string) {
 }
 END_TEST
 
+START_TEST(test_zero_should_be_twelve) {
+    fail_if(strcmp(get_hour_string(0), "twelve") != 0, NULL);
+}
+END_TEST
+
 void fuzzy_time_test_gen(int hour, int min, int start, int end,
                          char* expect_mask, int iter_on_hour) {
 
@@ -134,6 +139,9 @@ Suite* fuzzy_suite(void) {
     tcase_add_test(tc_core, test_quarterto);
     tcase_add_test(tc_core, test_tento);
     tcase_add_test(tc_core, test_fiveto);
+
+    // corner cases
+    tcase_add_test(tc_core, test_zero_should_be_twelve);
 
     suite_add_tcase(suite, tc_core);
 

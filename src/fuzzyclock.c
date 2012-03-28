@@ -33,6 +33,7 @@ char* FUZZY_MSG[] = {
 };
 
 char* const get_hour_string(int hour) {
+    if (hour < 1) hour = 12;
     return HOUR_NAMES[(hour - 1) % 12];
 }
 
