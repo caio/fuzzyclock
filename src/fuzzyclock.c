@@ -42,7 +42,7 @@ void get_fuzzy_time(struct tm* clock, char* buffer) {
     int min = clock->tm_min;
 
     if (min > 2) {
-        index = ((min - 3) / 5) - 1;
+        index = ((min - 3) / 5) + 1;
     }
 
     if (index > 6) { hour++; }
