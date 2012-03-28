@@ -32,6 +32,12 @@ void fuzzy_time_test_gen(int hour, int min, int start, int end,
     clock->tm_min = min;
     clock->tm_hour = hour;
 
+    // The expected hour on the fuzzy output in this
+    // case is the next hour
+    if (!iter_on_hour && start >= 33) {
+        hour++;
+    }
+
     for (i = start; i < end; i++) {
         if (iter_on_hour) { clock->tm_hour = i; }
         else { clock->tm_min = i; }
