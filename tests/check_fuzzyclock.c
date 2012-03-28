@@ -20,47 +20,38 @@ START_TEST(test_get_hour_string) {
 }
 END_TEST
 
-START_TEST(test_oclock) {
+void fuzzy_time_test_gen(int hour, int min, int start, int end,
+                         char* expect_mask, int iter_on_hour) {
+
     char buff[MAX_MSG_SIZE];
     char test[MAX_MSG_SIZE];
     time_t now = time(NULL);
     struct tm* clock = localtime(&now);
     int i = 0;
 
-    // Verifying o' clock
-    clock->tm_min = 0;
+    clock->tm_min = min;
+    clock->tm_hour = hour;
 
-    for (i = 1; i < 12; i++) {
-        clock->tm_hour = i;
-        snprintf(test, MAX_MSG_SIZE, "%s o' clock", get_hour_string(i));
+    for (i = start; i < end; i++) {
+        if (iter_on_hour) { clock->tm_hour = i; }
+        else { clock->tm_min = i; }
+
+        snprintf(test, MAX_MSG_SIZE, expect_mask,
+                 get_hour_string((iter_on_hour) ? i : hour));
 
         get_fuzzy_time(clock, buff);
 
         fail_if(strcmp(test, buff) != 0, "T%0d:WANTED \"%s\", GOT \"%s\"", i, test, buff);
     }
 }
+
+START_TEST(test_oclock) {
+    fuzzy_time_test_gen(1, 0, 1, 13, "%s o' clock", 1);
+}
 END_TEST
 
 START_TEST(test_fivepast) {
-    char buff[MAX_MSG_SIZE];
-    char test[MAX_MSG_SIZE];
-    time_t now = time(NULL);
-    struct tm* clock = localtime(&now);
-    int i = 0;
-
-    // Verifying "five past"
-
-    clock->tm_hour = 1;
-
-    for (i = 3; i < 8; i++) {
-        clock->tm_min = i;
-
-        snprintf(test, MAX_MSG_SIZE, "five past one");
-
-        get_fuzzy_time(clock, buff);
-
-        fail_if(strcmp(test, buff) != 0, "T%0d:WANTED \"%s\", GOT \"%s\"", i, test, buff);
-    }
+    fuzzy_time_test_gen(1, 0, 3, 8, "five past %s", 0);
 }
 END_TEST
 
